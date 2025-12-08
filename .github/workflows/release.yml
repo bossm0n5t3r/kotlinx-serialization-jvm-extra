@@ -22,10 +22,20 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Publish to Sonatype
+      - name: Publish to Sonatype (staging API upload)
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
         run: ./gradlew publish
+
+      - name: Notify Central Portal (manual upload -> Deployments 생성)
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        run: |
+          NAMESPACE="io.github.bossm0n5t3r"
+          curl -u "$OSSRH_USERNAME:$OSSRH_PASSWORD" \
+            -X POST \
+            "https://ossrh-staging-api.central.sonatype.com/service/local/manual/upload/defaultRepository/${NAMESPACE}"
