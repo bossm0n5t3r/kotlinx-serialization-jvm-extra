@@ -65,16 +65,19 @@ publishing {
         create<MavenPublication>("maven") {
             artifactId = "kotlinx-serialization-jvm-extra"
             from(components["java"])
+
             pom {
                 name.set("kotlinx-serialization-jvm-extra")
                 description.set("Extra serializers for JVM-only types using kotlinx.serialization")
                 url.set("https://github.com/bossm0n5t3r/kotlinx-serialization-jvm-extra")
+
                 licenses {
                     license {
                         name.set("MIT License")
                         url.set("https://opensource.org/licenses/MIT")
                     }
                 }
+
                 developers {
                     developer {
                         id.set("bossm0n5t3r")
@@ -82,6 +85,7 @@ publishing {
                         email.set("bossm0n5t3r@gmail.com")
                     }
                 }
+
                 scm {
                     url.set("https://github.com/bossm0n5t3r/kotlinx-serialization-jvm-extra")
                     connection.set("scm:git:git://github.com/bossm0n5t3r/kotlinx-serialization-jvm-extra.git")
@@ -90,12 +94,15 @@ publishing {
             }
         }
     }
+
     repositories {
         maven {
+            name = "ossrh-staging-api"
+
             val releasesRepoUrl =
-                uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                uri("https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/")
             val snapshotsRepoUrl =
-                uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+                uri("https://central.sonatype.com/repository/maven-snapshots/")
 
             url =
                 if (version.toString().endsWith("SNAPSHOT")) {
