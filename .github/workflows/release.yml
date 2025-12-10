@@ -30,12 +30,13 @@ jobs:
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
         run: ./gradlew publish
 
-      - name: Notify Central Portal (manual upload -> Deployments 생성)
+      - name: Notify Central Portal (manual upload → Deployments 생성)
         env:
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
         run: |
-          NAMESPACE="io.github.bossm0n5t3r"
-          curl -u "$OSSRH_USERNAME:$OSSRH_PASSWORD" \
-            -X POST \
-            "https://ossrh-staging-api.central.sonatype.com/service/local/manual/upload/defaultRepository/${NAMESPACE}"
+          NAMESPACE="io.github.bossm0n5t3r"  # central.sonatype.com/publishing/namespaces 에서 보이는 namespace
+          
+          echo "Calling manual upload for namespace=$NAMESPACE"
+          curl -v -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            "https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/${NAMESPACE}?publishing_type=user_managed"
