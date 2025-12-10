@@ -1,6 +1,8 @@
 # kotlinx-serialization-jvm-extra
 
-`kotlinx.serialization`에서 기본 제공하지 않는 JVM 타입(BigDecimal, java.time.\*, UUID 등)을 직렬화/역직렬화하기 위한 Serializer 모음 라이브러리입니다.
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.bossm0n5t3r/kotlinx-serialization-jvm-extra)](https://central.sonatype.com/artifact/io.github.bossm0n5t3r/kotlinx-serialization-jvm-extra)
+
+`kotlinx.serialization`에서 기본 제공하지 않는 JVM 타입(BigDecimal, `java.time.*`, `UUID` 등)을 직렬화/역직렬화하기 위한 Serializer 모음 라이브러리입니다.
 
 ## 지원 Serializer
 
@@ -41,13 +43,15 @@ Gradle 예시:
 
 ```kotlin
 dependencies {
-    implementation("io.github.bossm0n5t3r:kotlinx-serialization-jvm-extra:<version>")
+    implementation("io.github.bossm0n5t3r:kotlinx-serialization-jvm-extra:0.1.0")
 }
 ```
 
 ## 개발/테스트
 
-- JDK 21(Temurin), Kotlin 2.0.x, Gradle Wrapper 사용
+- JDK 21 (Temurin)
+- Kotlin 2.0.x
+- Gradle Wrapper 사용
 - 코드 스타일: ktlint 1.2.1
 
 ```bash
