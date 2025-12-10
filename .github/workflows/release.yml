@@ -38,5 +38,5 @@ jobs:
           
           echo "Calling manual upload for namespace=$NAMESPACE"
           curl -v -X POST \
-            -H "Authorization: Bearer $TOKEN" \
+            -H "Authorization: Bearer $OSSRH_TOKEN" \
             "https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/${NAMESPACE}?publishing_type=user_managed"
