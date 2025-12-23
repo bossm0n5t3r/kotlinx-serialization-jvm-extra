@@ -10,6 +10,7 @@
 - `BigIntegerSerializer` (문자열 기반)
 - `LocalDateSerializer` (`ISO-8601` 포맷)
 - `LocalDateTimeSerializer` (`ISO-8601` 포맷)
+- `OffsetDateTimeSerializer` (`ISO-8601` 포맷)
 - `InstantSerializer` (`ISO-8601`, UTC 기반)
 - `UUIDSerializer` (표준 UUID 문자열)
 
@@ -43,7 +44,7 @@ Gradle 예시:
 
 ```kotlin
 dependencies {
-    implementation("io.github.bossm0n5t3r:kotlinx-serialization-jvm-extra:0.1.0")
+    implementation("io.github.bossm0n5t3r:kotlinx-serialization-jvm-extra:0.2.0")
 }
 ```
 
